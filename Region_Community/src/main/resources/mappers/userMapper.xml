@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.tukorea.project.mapper.UserMapper">
+ 	
+ 	<insert id="register"> 
+   		insert into user_free (id,name, passwd, residence) values
+ 		(#{id},#{name}, #{passwd},#{residence})
+     </insert> 
+     
+     <select id="login" resultType="UserVO">
+ 		select id, passwd, residence from user_free where id = #{id} and passwd = #{passwd}
+     </select>
+     
+     <select id="selectAll" resultType="org.tukorea.project.domain.UserVO">
+     <![CDATA[
+ 		select * from user_free
+      ]]> 
+     </select>
+</mapper>  
