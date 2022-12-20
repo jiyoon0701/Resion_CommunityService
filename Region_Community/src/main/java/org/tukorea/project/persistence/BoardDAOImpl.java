@@ -1,7 +1,9 @@
 package org.tukorea.project.persistence;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +19,13 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	private static final String namespace = "org.tukorea.project.mapper.BoardMapper";
 	
-	public List<BoardVO> readList(String residence) throws Exception { // 거주지를 매개변수로 받아 리스트를 출력하는 함수
+	public List<BoardVO> readList(String residence, String residenceGu) throws Exception { // 거주지를 매개변수로 받아 리스트를 출력하는 함수
 		// TODO Auto-generated method stub
 		List<BoardVO> boardlist = new ArrayList<BoardVO>();
-		
-		boardlist = sqlSession.selectList(namespace+".board_List", residence);
+		Map<String, Object> map = new HashMap<>();
+		map.put("residence", residence);
+		map.put("residenceGu", residenceGu);
+		boardlist = sqlSession.selectList(namespace+".board_List", map);
 	
 		return boardlist;
 	}
@@ -51,11 +55,13 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
 	@Override
-	public List<CommentVO> comment(String residence) throws Exception {
+	public List<CommentVO> comment(String residence, String residenceGu) throws Exception {
 		// TODO Auto-generated method stub
 		List<CommentVO> commentlist = new ArrayList<CommentVO>();
-		
-		commentlist = sqlSession.selectList(namespace+".comment", residence);
+		Map<String, Object> map = new HashMap<>();
+		map.put("residence", residence);
+		map.put("residenceGu", residenceGu);
+		commentlist = sqlSession.selectList(namespace+".comment", map);
 	
 		return commentlist;
 	}

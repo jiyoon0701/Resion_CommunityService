@@ -26,10 +26,10 @@ public class BoardServiceImpl implements BoardService {
 	
 	private static final String namespace = "org.tukorea.project.mapper.BoardMapper";
 	@Override
-	public List<BoardVO> boardList(String residence) throws Exception {
+	public List<BoardVO> boardList(String residence, String residenceGu) throws Exception {
 		// TODO Auto-generated method stub
 	
-		return boardDAO.readList(residence);
+		return boardDAO.readList(residence, residenceGu);
 	}
 
 	@Override
@@ -58,9 +58,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<CommentVO> comment(String residence) throws Exception {
+	public List<CommentVO> comment(String residence, String residenceGu) throws Exception {
 		// TODO Auto-generated method stub
-		return boardDAO.comment(residence);
+		return boardDAO.comment(residence, residenceGu);
 	}
 	
 	@Override

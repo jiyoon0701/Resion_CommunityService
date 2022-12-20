@@ -7,12 +7,12 @@
 <mapper namespace="org.tukorea.project.mapper.UserMapper">
  	
  	<insert id="register"> 
-   		insert into user_free (id,name, passwd, residence) values
- 		(#{id},#{name}, #{passwd},#{residence})
+   		insert into user_free (id,name, passwd, residence, residenceGu) values
+ 		(#{id},#{name}, #{passwd},#{residence}, #{residenceGu})
      </insert> 
      
      <select id="login" resultType="UserVO">
- 		select id, passwd, residence from user_free where id = #{id} and passwd = #{passwd}
+ 		select id, passwd, residence, residenceGu from user_free where id = #{id} and passwd = #{passwd}
      </select>
      
      <select id="selectAll" resultType="org.tukorea.project.domain.UserVO">

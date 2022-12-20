@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -84,7 +84,7 @@ String session_id =(String) session.getAttribute("id");
 </div>
 	<div align=center>
 		<h1>
-			<header>${residence} 커뮤니티에 오신 걸 환영합니다  </header>
+			<header>${residence} ${residenceGu} 커뮤니티에 오신 걸 환영합니다  </header>
 		</h1>
 		<br>
 <!-- 		<table> -->
@@ -128,13 +128,14 @@ String session_id =(String) session.getAttribute("id");
 			<c:set var = "board_num" value="${board.num}" />
 			<c:set var = "usercomment" value="${comments.comment}" />
 			<c:set var = "residence" value="${comments.residence}" />
+				<c:set var = "residenceGu" value="${comments.residenceGu}" />
 			<c:set var = "comment_num" value="${comments.comment_num}" />
 			<c:set var = "sessionId" value="<%=session_id %>" />
 			<c:set var = "comment_board_num" value="${comments.boardnum}" />
 				<c:if test = "${board_num eq comment_board_num}">
 					<p id="comment">${comments.userid} | ${comments.comment}</p>
 	     					<c:if test = "${sessionId eq comments.userid}">
-	     						<a style="color: darkorchid; font-size: 13px;" href="/board/commentdelete?comment_num=${comment_num}&userid=${sessionId}&residence=${residence}">삭제하기</a>
+	     						<a style="color: darkorchid; font-size: 13px;" href="/board/commentdelete?comment_num=${comment_num}&userid=${sessionId}&residence=${residence}&residenceGu=${residenceGu}">삭제하기</a>
 	     					</c:if>	 
 	     		</c:if>    
 			</c:forEach>	
@@ -143,6 +144,7 @@ String session_id =(String) session.getAttribute("id");
 	    		<input type="hidden" name="boardnum" id="boardnum" value="${board.num}">
 	    		<input type="hidden" name="userid" id="userid" value="${id}">
 	    		<input type="hidden" name="residence" id="residence" value="${residence}">
+					<input type="hidden" name="residence" id="residenceGu" value="${residenceGu}">
 	    		<button id="comment_b" type="submit">게시</button>
 				</form>
 				

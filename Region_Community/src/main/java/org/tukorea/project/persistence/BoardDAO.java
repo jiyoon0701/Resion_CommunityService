@@ -7,7 +7,7 @@ import org.tukorea.project.domain.CommentVO;
 
 public interface BoardDAO {
 		//리스트 
-		public List<BoardVO> readList(String residence) throws Exception;
+		public List<BoardVO> readList(String residence, String residenceGu) throws Exception;
 		// 게시글 작성
 		public void boardWrite(BoardVO board) throws Exception;
 		// 내 게시글 보기
@@ -17,7 +17,7 @@ public interface BoardDAO {
 		// 게시글 삭제
 		public void delete(int num) throws Exception; 
 		// 댓글 보기
-		public List<CommentVO> comment(String residence) throws Exception;
+		public List<CommentVO> comment(String residence, String residenceGu) throws Exception;
 		// 댓글 추가
 		public void commentInsert(CommentVO comment) throws Exception;
 		//댓글 삭제

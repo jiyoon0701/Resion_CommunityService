@@ -1,7 +1,11 @@
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="org.aspectj.org.eclipse.jdt.core.IMember" %>
+<%@ page language="java" pageEncoding="UTF-8"
+		 contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" pageEncoding="UTF-8"
-	contentType="text/html; charset=UTF-8"%>
+
+
 
 <html>
 <head>
@@ -17,7 +21,7 @@
 
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	<% request.setCharacterEncoding("utf-8"); %>
 </head>
 
 <body>
@@ -45,11 +49,10 @@
 				onclick="location.href='/member/register'">회원가입</button>
 		
 		</div>
-		
-		<c:if test="${member != null }">
-		
-			<c:redirect url="/board/board?residence=${member.residence} ">
-			
+
+		<c:if test="${residence != null }">
+			<c:redirect url="/board/board?residence=${residence}&residenceGu=${residenceGu} ">
+
 			</c:redirect>
 		</c:if>
 		<c:if test="${msg == false}">

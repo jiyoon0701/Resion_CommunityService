@@ -7,6 +7,8 @@ public class UserVO {
 	private String name;
 	private String passwd;
 	private String residence;
+
+	private String residenceGu;
 	private Date regDate;
 	
 	public String getId() {
@@ -32,6 +34,13 @@ public class UserVO {
 	}
 	public void setResidence(String residence) {
 		this.residence = residence;
+	}
+
+	public String getResidenceGu() {
+		return residenceGu;
+	}
+	public void setResidenceGu(String residenceGu) {
+		this.residenceGu = residenceGu;
 	}
 	
 	public String toString() {

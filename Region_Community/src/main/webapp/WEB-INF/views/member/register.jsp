@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	 <link rel="stylesheet" href="../resources/css/register.css"/> 
 	 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<title>회원가입</title>
 	</head>
 	<script type="text/javascript">
@@ -52,17 +53,37 @@
                 <div class="form-group has-feedback">
 					<label class="control-label" for="residence">지역</label>
 					<!-- <input class="form-control" type="text" id="residence" name="residence" /> -->
-				<div class = "residence" >
-				<select name = "residence">
-					<option value='' selected>-- 선택 --</option>
-					<option value='Siheung'>시흥시</option>
-					<option value='Ansan'>안산시</option>
-					<option value='Suwon'>수원시</option>
-					<option value="gapyeong">가평군</option>
-					<option value="gapyeong">과천시</option>
-				</select>
+<%--				<div class = "residence" >--%>
+<%--				<select name = "residence">--%>
+<%--					<option value='' selected>-- 선택 --</option>--%>
+<%--					<option value='Siheung'>시흥시</option>--%>
+<%--					<option value='Ansan'>안산시</option>--%>
+<%--					<option value='Suwon'>수원시</option>--%>
+<%--					<option value="gapyeong">가평군</option>--%>
+<%--					<option value="gapyeong">과천시</option>--%>
+<%--				</select>--%>
+<%--				</div>--%>
+<%--					<span id="si">--%>
+<%--     					<select name="residence" onchange="getText('residence')">--%>
+<%--	    		 		<option value="">시도를 선택하세요</option>--%>
+<%--     					</select>--%>
+<%--					</span>--%>
+<%--					<span id="gu">--%>
+<%--						<select name="residenceGu" onchange="getText('residenceGu')">--%>
+<%--						<option value="">구군을 선택하세요</option>--%>
+<%--						</select>--%>
+<%--    				</span>--%>
+					<span id="si">
+     <select name="residence" onchange="getText('si')">
+	     <option value="">시도를 선택하세요</option>
+     </select>
+    </span>
+					<span id="gu">
+	<select name="residenceGu" onchange="getText('gu')">
+		<option value="">구군을 선택하세요</option>
+	</select>
+    </span>
 				</div>
-			</div>
 				<div class="form-group has-feedback">
 					<button class="btn btn-success" type="submit" id="submit">회원가입</button>
 					<button class="cencle btn btn-danger" type="button">취소</button>
@@ -75,5 +96,60 @@
     </div>
 		
 	</body>
-	
+
+	<script type="text/javascript">
+		//$(function() : 문서 준비 완료.
+		$(function(){
+
+// 서버에서 문자열로 데이터 전달 받기
+			$.ajax({   //jquery를 이용한 ajax 처리
+				url : "/ajax/select2",
+				success : function(data) {
+					//data : utf-8로 인코딩된 순수 문자열 데이터.
+					//배열로 변환
+					let arr = data.substring(data.indexOf('[')+1,
+							data.indexOf(']')).split(",")
+					$.each(arr,function(i,item) {
+						$("select[name=residence]").append(function(){
+							return "<option>"+item+"</option>"
+						})
+					})
+				}
+			})
+
+		})
+
+		function getText(name) { //gu
+			let city = $("select[name='residence']").val();
+			let gu = $("select[name='residenceGu']").val();
+			let disname;
+			let toptext="구군을 선택하세요";
+			let params = "";
+			if (name == "si") {
+				params = "si=" + city.trim();
+				disname = "residenceGu";
+			} else {
+				return ;
+			}
+			$.ajax({
+				url : "${path}/ajax/select",
+				type : "POST",
+				data : params,
+				success : function(arr) {
+					//데이터를 추가해야 하는 select 태그의 option 태그들을 전부 제거
+					$("select[name="+disname+"] option").remove();
+					//첫번째 option 객체 추가
+					$("select[name="+disname+"]").append(function(){
+						return "<option value=''>"+toptext+"</option>"
+					})
+					//arr : 서버에서 전송한 배열 객체
+					$.each(arr,function(i,item) {
+						$("select[name="+disname+"]").append(function(){
+							return "<option>"+item+"</option>"
+						})
+					})
+				}
+			})
+		}
+	</script>
 </html>

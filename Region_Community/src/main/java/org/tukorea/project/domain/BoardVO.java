@@ -5,11 +5,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class BoardVO {	
 	private String id;
 	private String residence;
+	private String residenceGu;
 	private String content;
 	private String image;
 	private MultipartFile imagefile;
 	private int num;
-	
+
 	public String getId() {
 		return id;
 	}
@@ -21,6 +22,13 @@ public class BoardVO {
 	}
 	public void setResidence(String residence) {
 		this.residence = residence;
+	}
+
+	public String getResidenceGu() {
+		return residenceGu;
+	}
+	public void setResidenceGu(String residenceGu) {
+		this.residenceGu = residenceGu;
 	}
 	public String getContent() {
 		return content;

@@ -9,12 +9,20 @@ public class CommentVO {
 	private String comment;
 	private Date board_date;
 	private String residence;
+	private String residenceGu;
 	
 	public String getResidence() {
 		return residence;
 	}
 	public void setResidence(String residence) {
 		this.residence = residence;
+	}
+
+	public String getResidenceGu() {
+		return residenceGu;
+	}
+	public void setResidenceGu(String residenceGu) {
+		this.residenceGu = residenceGu;
 	}
 	public int getComment_num() {
 		return comment_num;

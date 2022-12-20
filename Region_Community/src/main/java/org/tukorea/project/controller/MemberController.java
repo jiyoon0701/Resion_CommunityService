@@ -1,6 +1,7 @@
 package org.tukorea.project.controller;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,17 +42,17 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(UserVO user, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+	public String login(UserVO user, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		logger.info("post login");
-		
+
 		HttpSession session = req.getSession();
 		UserVO login = memberService.login(user);
-		
-		if(login == null) {
+		if (login == null) {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
-		}else {
-			session.setAttribute("member", login);
+		} else {
+			session.setAttribute("residence", URLEncoder.encode(login.getResidence(),"UTF-8"));
+			session.setAttribute("residenceGu", URLEncoder.encode(login.getResidenceGu(),"UTF-8"));
 			session.setAttribute("id", login.getId());
 		}
 		return null;

@@ -7,13 +7,13 @@
 <mapper namespace="org.tukorea.project.mapper.BoardMapper">
      <select id="board_List" resultType="org.tukorea.project.domain.BoardVO">
      <![CDATA[
- 		select * from board_free where residence = #{residence} order by board_date DESC
+ 		select * from board_free where residence = #{residence} and residenceGu = #{residenceGu} order by board_date DESC
       ]]> 
      </select>
      
      <insert id="boardWrite"> 
-   		insert into board_free(id, residence, content, image) values
- 		(#{id},#{residence}, #{content}, #{image})
+   		insert into board_free(id, residence,residenceGu, content, image) values
+ 		(#{id},#{residence},#{residenceGu}, #{content}, #{image})
      </insert> 
  	
      <update id="update" >
@@ -30,12 +30,12 @@
     </delete>
     
     <select id="comment" resultType="CommentVO">
-		select * from comment_free where residence = #{residence}
+		select * from comment_free where residence = #{residence} and residenceGu = #{residenceGu}
     </select>
     
     <insert id="commentinsert"> 
-   		insert into comment_free(boardnum, userid, comment, residence) values
- 		(#{boardnum},#{userid}, #{comment}, #{residence}) 
+   		insert into comment_free(boardnum, userid, comment, residence, residenceGu) values
+ 		(#{boardnum},#{userid}, #{comment}, #{residence}, #{residenceGu})
      </insert> 
      <delete id="commentdelete">
 		delete from comment_free where comment_num = #{Comment_num}
