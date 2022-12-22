@@ -101,6 +101,7 @@
 	</table>
 	<input type="hidden" name="id" value="${board.id}">
 		<input type="hidden" name="residence" value="${board.residence}">
+		<input type="hidden" name="residenceGu" value="${board.residenceGu}">
 		<input type="hidden" name="num" value="${board.num}">
 		<input type="submit" class = "submit" value="수정">
 	   <input type="reset" class = "submit" name="reset" value="다시작성">

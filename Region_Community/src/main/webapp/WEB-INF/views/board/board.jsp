@@ -144,7 +144,7 @@ String session_id =(String) session.getAttribute("id");
 	    		<input type="hidden" name="boardnum" id="boardnum" value="${board.num}">
 	    		<input type="hidden" name="userid" id="userid" value="${id}">
 	    		<input type="hidden" name="residence" id="residence" value="${residence}">
-					<input type="hidden" name="residence" id="residenceGu" value="${residenceGu}">
+					<input type="hidden" name="residenceGu" id="residenceGu" value="${residenceGu}">
 	    		<button id="comment_b" type="submit">게시</button>
 				</form>
 				
