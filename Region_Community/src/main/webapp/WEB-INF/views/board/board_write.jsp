@@ -56,7 +56,9 @@
 		action="/board/board_write" enctype="multipart/form-data">
 		<h2>글쓰기</h2>
 		<input id="id" name="id" value=${id} type="hidden" />
+
 		 <input id="residence" name="residence" value=${residence} type="hidden" />
+		<input id="residenceGu" name="residenceGu" value=${residenceGu} type="hidden" />
 		<table class="table table-hover">
 			<tbody>
 

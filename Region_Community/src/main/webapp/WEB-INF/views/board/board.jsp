@@ -70,7 +70,7 @@ a:visited { text-decoration: none; text-shadow: 0 0 24px; }
 String session_id =(String) session.getAttribute("id");
 %>
 <body>
-<c:url value="/board/board_write?&residence=${residence}"
+<c:url value="/board/board_write?&residence=${residence}&residenceGu=${residenceGu}"
 			var="url" />
 <div class="btn-group-vertical" role="group" aria-label="..." id="minibar">
 	
@@ -102,7 +102,7 @@ String session_id =(String) session.getAttribute("id");
 					<div class="thumbnail">
 				<c:if test = "${board.image ne null}"> 
 							<div id="cm_img_div">
-							<img id="cm_img" src="/resources/imgUpload/${board.image}">
+							<img id="cm_img" src="../../../resources/imgUpload/${board.image}">
 
 							</div>
 				</c:if>

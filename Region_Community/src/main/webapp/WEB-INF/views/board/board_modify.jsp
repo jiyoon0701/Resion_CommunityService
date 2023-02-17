@@ -94,7 +94,7 @@
       		<tr>
       			<!-- 출력 시 공백이나 < > 줄바꿈 우리 눈에 보여주기 하기 위해서(html 태그로 인식해서 안되기 때매) -->
         		<th id="th">사진</th>
-        		<td><div ><img id="cm_img" src="../resources/imgUpload/${board.image}" value = "${board.image}"></div></td>        		      			
+        		<td><div ><img id="cm_img" src="../../../resources/imgUpload/${board.image}" value = "${board.image}"></div></td>
       		</tr>     
 		</tbody>
 	

@@ -27,7 +27,7 @@
         <div class="py-5 text-center">            
             <img class="d-block mx-auto mb-4 " src="../resources/image/signup.png" alt="" width="72" height="72">
             <h2>회원가입</h2>
-            <p class="lead">경기도에 오신것을 환영합니다.</p>
+            <p class="lead">지역 커뮤니티에 오신것을 환영합니다.</p>
         </div>
 
         <div class="col-md-12 order-md-1">
